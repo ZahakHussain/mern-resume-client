@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {jwtDecode} from "jwt-decode";
+import api from './api';
 
 const ResumeBuilder = () => {
   const [resume, setResume] = useState({
@@ -61,7 +62,7 @@ const ResumeBuilder = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-    const res = await axios.post("http://localhost:5000/api/resumes", resume, 
+    const res = await api.post("/api/resumes", resume, 
       { headers : {Authorization : token }}
     );
     alert("Resume saved: " + res.data.name);

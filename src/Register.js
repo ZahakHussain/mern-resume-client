@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import api from './api';
 
 function Register() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', form);
+      await api.post('/api/register', form);
       alert('User registered. You can now log in.');
       navigate("/login");
       // if (existingUser) {
