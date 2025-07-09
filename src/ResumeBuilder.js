@@ -37,6 +37,8 @@ const ResumeBuilder = () => {
     userEmail = decoded.email;
   }
 
+ 
+
   const handleChange = (e) => {
     setResume({ ...resume, [e.target.name]: e.target.value });
   };
@@ -61,37 +63,52 @@ const ResumeBuilder = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const res = await api.post("/api/resumes", resume, 
-      { headers : {Authorization : token }}
-    );
-    alert("Resume saved: " + res.data.name);
+     if (!token){
+      alert("Please login first");
+      return;
+    }
+    console.log("saving resume with data", resume)
+
+    // const res = await api.post("/api/resumes", resume, { withCredentials : true });
+    // alert("Resume saved: " + res.data.name);
+    
+    try {
+      const res = await api.post('/api/resumes', resume,{
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          withCredentials: true,
+        });
+      console.log('Saved:', res.data);
+      alert('Resume saved successfully!');
+    } catch (err) {
+      console.error('Save error', err.response?.data || err.message);
+      alert("Failed to save resume. Please try Again!")
+    }
   };
 
-  <>
-  <button
-    onClick={() => {
-      localStorage.removeItem("token");
-      alert("Logged out!");
-      navigate("/login");
-    }}
-    className="bg-red-500 text-white p-2 rounded mt-4"
-  >
-    Logout
-  </button>
+  // <>
+  
+  //   <button onClick = {() => {
+  //     localStorage.removeItem("token");
+  //       alert("Logged out!");
+  //       navigate("/login");
+  //     }}
+  //     className="bg-red-500 text-white p-2 rounded mt-4">Logout</button>
 
-  <button
-    onClick={() => navigate("/resumes") }
-    className="bg-green-600 text-white p-2 rounded" >
-      View My Resumes
-  </button>
-  </>
+  //   <button onClick={() => navigate("/resumes") }
+  //     className="bg-green-600 text-white p-2 rounded" >
+  //       View My Resumes
+  //   </button>
+
+  // </>
 
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
         <p className="text-sm text-gray-500">Logged in as: {userEmail}</p>
         <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+  
       </div>
       <h1 className="text-2xl font-bold mb-4">Resume Builder</h1>
       <form onSubmit={handleSubmit} className="space-y-2">
@@ -122,10 +139,11 @@ const ResumeBuilder = () => {
           <input key={idx} placeholder="Skill" value={skill} onChange={(e) => handleSkillChange(idx, e)} className="border p-2 w-full" />
         ))}
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded mt-4">Save Resume</button>
+        <button type="submit"  className="bg-blue-500 text-white p-2 rounded mt-4">Save Resume</button>
       </form>
     </div>
   );
 }
 
 export default ResumeBuilder; 
+// onClick={handleSubmit}
