@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "./api";
 
 const ResumeList = () => {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ const ResumeList = () => {
 
     const fetchResumes = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/resumes", {
-          headers: { Authorization: token }
+        const res = await api.get("/api/resumes", {
+          headers: { Authorization: `Bearer ${token}` }
         });
         setResumes(res.data);
       } catch (err) {
