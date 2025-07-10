@@ -73,19 +73,19 @@ const ResumeBuilder = () => {
     // alert("Resume saved: " + res.data.name);
     
     try {
-      const res = await api.post('/api/resumes', resume,{
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-          withCredentials: true,
-        });
-      console.log('Saved:', res.data);
-      alert('Resume saved successfully!');
+      const res = await api.post('/api/resumes', resume);
+      alert('Resume saved:' + res.data.name);
+      console.log('Saved Resume:', res.data);
     } catch (err) {
       console.error('Save error', err.response?.data || err.message);
-      alert("Failed to save resume. Please try Again!")
+      alert("Error Saving resume:" + ( err.response?.data?.message || "Unknown Error"));
     }
   };
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   },
+        //   withCredentials: true,
+        // });
 
   // <>
   

@@ -5,4 +5,12 @@ const api = axios.create({
     withCredentials: true,
 });
 
+api.interceptors.request.use((req) => {
+    const token = localStorage.getItem("token");
+    if (token){
+        req.headers.Authorization = `Bearer ${token}`; //attach token here
+    }
+    return req;
+});
+
 export default api;
