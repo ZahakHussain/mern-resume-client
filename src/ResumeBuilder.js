@@ -63,10 +63,9 @@ const ResumeBuilder = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     if (!token){
-      alert("Please login first");
-      return;
-    }
+    //  if (!token){
+    //   alert("Please login first");
+    //   return;
     console.log("saving resume with data", resume)
 
     // const res = await api.post("/api/resumes", resume, { withCredentials : true });
@@ -75,7 +74,7 @@ const ResumeBuilder = () => {
     try {
       const res = await api.post('/api/resumes', resume);
       alert('Resume saved:' + res.data.name);
-      console.log('Saved Resume:', res.data);
+      // console.log('Saved Resume:', res.data);
     } catch (err) {
       console.error('Save error', err.response?.data || err.message);
       alert("Error Saving resume:" + ( err.response?.data?.message || "Unknown Error"));
