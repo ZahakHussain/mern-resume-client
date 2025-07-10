@@ -95,19 +95,19 @@ const ResumeBuilder = () => {
   //     }}
   //     className="bg-red-500 text-white p-2 rounded mt-4">Logout</button>
 
-  //   <button onClick={() => navigate("/resumes") }
-  //     className="bg-green-600 text-white p-2 rounded" >
-  //       View My Resumes
-  //   </button>
-
   // </>
+  <button onClick={() => navigate("/resumes") }
+      className="bg-green-600 text-white p-2 rounded" >
+        View My Resumes
+    </button>
 
   return (
     <div className="p-4">
+
       <div className="flex justify-between items-center mb-4">
         <p className="text-sm text-gray-500">Logged in as: {userEmail}</p>
         <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
-  
+        <button onClick={() => navigate("/resumes") } className="bg-green-600 text-white p-2 rounded" >View My Resumes</button>
       </div>
       <h1 className="text-2xl font-bold mb-4">Resume Builder</h1>
       <form onSubmit={handleSubmit} className="space-y-2">
@@ -145,4 +145,3 @@ const ResumeBuilder = () => {
 }
 
 export default ResumeBuilder; 
-// onClick={handleSubmit}
