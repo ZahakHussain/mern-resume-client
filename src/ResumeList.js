@@ -46,7 +46,7 @@ const ResumeList = () => {
     fetchResumes();
   }, [navigate, fetchResumes]);
 
-};
+
 
 
 return (
@@ -78,5 +78,7 @@ return (
     </ul>
   </div>
 );
+
+};
 
 export default ResumeList;
