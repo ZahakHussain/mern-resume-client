@@ -41,7 +41,7 @@ const ResumeList = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return navigate("/login");
-    
+
     fetchResumes();
   }, [navigate]);
 
@@ -52,7 +52,7 @@ const ResumeList = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold mb-4">Your Resumes</h1>
         <button
-          onClick={() => navigate("/builder")}
+          onClick={() => navigate("/resume")}
           className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
         >Back to Builder
         </button>
