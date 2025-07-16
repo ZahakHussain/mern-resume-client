@@ -78,6 +78,5 @@ return (
     </ul>
   </div>
 );
-}
 
 export default ResumeList;
