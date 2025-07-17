@@ -118,18 +118,18 @@ const ResumeBuilder = () => {
         <h2 className="font-semibold mt-4">Education</h2>
         {resume.education.map((edu, idx) => (
           <div key={idx} className="space-y-1">
-            <input name="degree" placeholder="Degree" onChange={(e) => handleEduChange(idx, e)} className="border p-2 w-full" />
-            <input name="institute" placeholder="Institute" onChange={(e) => handleEduChange(idx, e)} className="border p-2 w-full" />
-            <input name="year" placeholder="Year" onChange={(e) => handleEduChange(idx, e)} className="border p-2 w-full" />
+            <input name="degree" placeholder="Degree" value={edu.degree} onChange={(e) => handleEduChange(idx, e)} className="border p-2 w-full" />
+            <input name="institute" placeholder="Institute" value={edu.institute} onChange={(e) => handleEduChange(idx, e)} className="border p-2 w-full" />
+            <input name="year" placeholder="Year" value={edu.year} onChange={(e) => handleEduChange(idx, e)} className="border p-2 w-full" />
           </div>
         ))}
 
         <h2 className="font-semibold mt-4">Experience</h2>
         {resume.experience.map((exp, idx) => (
           <div key={idx} className="space-y-1">
-            <input name="title" placeholder="Title" onChange={(e) => handleExpChange(idx, e)} className="border p-2 w-full" />
-            <input name="company" placeholder="Company" onChange={(e) => handleExpChange(idx, e)} className="border p-2 w-full" />
-            <input name="years" placeholder="Years" onChange={(e) => handleExpChange(idx, e)} className="border p-2 w-full" />
+            <input name="title" placeholder="Title" value={exp.title} onChange={(e) => handleExpChange(idx, e)} className="border p-2 w-full" />
+            <input name="company" placeholder="Company" value={exp.company} onChange={(e) => handleExpChange(idx, e)} className="border p-2 w-full" />
+            <input name="years" placeholder="Years" value={exp.years} onChange={(e) => handleExpChange(idx, e)} className="border p-2 w-full" />
           </div>
         ))}
 
