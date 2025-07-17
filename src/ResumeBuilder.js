@@ -44,16 +44,18 @@ const ResumeBuilder = () => {
   };
 
   const handleEduChange = (index, e) => {
-    const newEdu = [...resume.education];
-    newEdu[index][e.target.name] = e.target.value;
-    setResume({ ...resume, education: newEdu });
-  };
+  const { name, value } = e.target;
+  const updated = [...resume.education];
+  updated[index][name] = value;
+  setResume({ ...resume, education: updated });
+};
 
   const handleExpChange = (index, e) => {
-    const newExp = [...resume.experience];
-    newExp[index][e.target.name] = e.target.value;
-    setResume({ ...resume, experience: newExp });
-  };
+  const { name, value } = e.target;
+  const updated = [...resume.experience];
+  updated[index][name] = value;
+  setResume({ ...resume, experience: updated });
+};
 
   const handleSkillChange = (index, e) => {
     const newSkills = [...resume.skills];
