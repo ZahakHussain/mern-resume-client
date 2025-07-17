@@ -16,6 +16,7 @@ const ResumeList = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       setResumes(res.data);
+      console.log("Fetched resumes:", res.data);
     } catch (err) {
       console.error("Failed to fetch resumes:", err);
       alert("Session expired. Please login again.");

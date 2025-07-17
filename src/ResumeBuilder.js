@@ -2,7 +2,7 @@ import { useState } from "react";
 // import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import api from './api';
 
 const ResumeBuilder = () => {
@@ -37,7 +37,7 @@ const ResumeBuilder = () => {
     userEmail = decoded.email;
   }
 
- 
+
 
   const handleChange = (e) => {
     setResume({ ...resume, [e.target.name]: e.target.value });
@@ -70,24 +70,24 @@ const ResumeBuilder = () => {
 
     // const res = await api.post("/api/resumes", resume, { withCredentials : true });
     // alert("Resume saved: " + res.data.name);
-    
+
     try {
       const res = await api.post('/api/resumes', resume);
       alert('Resume saved:' + res.data.name);
       // console.log('Saved Resume:', res.data);
     } catch (err) {
       console.error('Save error', err.response?.data || err.message);
-      alert("Error Saving resume:" + ( err.response?.data?.message || "Unknown Error"));
+      alert("Error Saving resume:" + (err.response?.data?.message || "Unknown Error"));
     }
   };
-        //   headers: {
-        //     Authorization: `Bearer ${token}`
-        //   },
-        //   withCredentials: true,
-        // });
+  //   headers: {
+  //     Authorization: `Bearer ${token}`
+  //   },
+  //   withCredentials: true,
+  // });
 
   // <>
-  
+
   //   <button onClick = {() => {
   //     localStorage.removeItem("token");
   //       alert("Logged out!");
@@ -96,10 +96,10 @@ const ResumeBuilder = () => {
   //     className="bg-red-500 text-white p-2 rounded mt-4">Logout</button>
 
   // </>
-  <button onClick={() => navigate("/resumes") }
-      className="bg-green-600 text-white p-2 rounded" >
-        View My Resumes
-    </button>
+  // <button onClick={() => navigate("/resumes") }
+  //     className="bg-green-600 text-white p-2 rounded" >
+  //       View My Resumes
+  //   </button>
 
   return (
     <div className="p-4">
@@ -107,7 +107,7 @@ const ResumeBuilder = () => {
       <div className="flex justify-between items-center mb-4">
         <p className="text-sm text-gray-500">Logged in as: {userEmail}</p>
         <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
-        <button onClick={() => navigate("/resumes") } className="bg-green-600 text-white p-2 rounded" >View My Resumes</button>
+        <button onClick={() => navigate("/resumes")} className="bg-green-600 text-white p-2 rounded" >View My Resumes</button>
       </div>
       <h1 className="text-2xl font-bold mb-4">Resume Builder</h1>
       <form onSubmit={handleSubmit} className="space-y-2">
@@ -138,7 +138,7 @@ const ResumeBuilder = () => {
           <input key={idx} placeholder="Skill" value={skill} onChange={(e) => handleSkillChange(idx, e)} className="border p-2 w-full" />
         ))}
 
-        <button type="submit"  className="bg-blue-500 text-white p-2 rounded mt-4">Save Resume</button>
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded mt-4">Save Resume</button>
       </form>
     </div>
   );
