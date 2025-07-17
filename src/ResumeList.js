@@ -67,9 +67,23 @@ const ResumeList = () => {
             <h2 className="font-semibold">{resume.name}</h2>
             <p>Email: {resume.email}</p>
             <p>Phone: {resume.phone}</p>
-            <p>Education: {resume.education}</p>
-            <p>Experience: {resume.experience}</p>
-            <p>Skills: {resume.skills.join(", ")}</p>
+            <p className="mt-2 font-semibold">Education:</p>
+            <ul className="list-disc ml-5">
+              {resume.education.map((edu, i) => (
+                <li key={edu._id || i}>
+                  {edu.degree} at {edu.institute} ({edu.year})
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 font-semibold">Experience:</p>
+            <ul className="list-disc ml-5">
+              {resume.experience.map((exp, i) => (
+                <li key={exp._id || i}>
+                  {exp.title} at {exp.company} ({exp.years})
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 font-semibold">Skills: {resume.skills.join(", ")}</p>
             <button onClick={() => handleDelete(resume._id)} className="mt-2 bg-red-500 text-white px-3 py-1 rounded">Delete</button>
           </li>
         ))}
